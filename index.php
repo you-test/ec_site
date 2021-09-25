@@ -6,40 +6,35 @@ $pdo = Database::pdo();
 $itemInstance = new Items($pdo);
 $items = $itemInstance->getItems();
 
+print_r($_SESSION['cart']);
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>EC furniture</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <h1>EC furniture</h1>
     <h2>商品一覧</h2>
     <div class="btn tocart">
-        <a href="">カート</a>
+        <a href="cart.php">カート</a>
     </div>
     <div class="container">
 
         <?php foreach ($items as $item): ?>
-        <div class="item-block">
-            <div class="img-wrapper">
-                <img src="<?= 'img/item'. Utils::h($item->id) . '.jpg'; ?>" alt="furniture_image">
+            <div class="item-block">
+                <div class="img-wrapper">
+                    <img src="<?= 'img/item'. Utils::h($item->id) . '.jpg'; ?>" alt="furniture_image">
+                </div>
+                <div>
+                    <p><?= Utils::h($item->name); ?></p>
+                    <p>&yen;<?= Utils::h($item->price); ?></p>
+                </div>
+                <p><?= nl2br(Utils::h($item->comment)); ?></p>
+                <div class="num">
+                    <p>数量</p>
+                    <form action="cart.php?action=add" method="post">
+                        <input type="text" name="num">
+                        <input type="hidden" name="id" value="<?= Utils::h($item->id); ?>">
+                        <input type="hidden" name="name" value="<?= Utils::h($item->name); ?>">
+                        <input type="hidden" name="price" value="<?= Utils::h($item->price); ?>">
+                        <input type="submit" value="カートに入れる">
+                    </form>
+                </div>
             </div>
-            <div>
-                <p><?= Utils::h($item->name); ?></p>
-                <p>&yen;<?= Utils::h($item->price); ?></p>
-            </div>
-            <p><?= nl2br(Utils::h($item->comment)); ?></p>
-            <div class="num">
-                <p>数量</p>
-                <form action="post">
-                    <input type="text">
-                    <input type="submit" value="カートに入れる">
-                </form>
-            </div>
-        </div>
         <?php endforeach; ?>
 
     </div>

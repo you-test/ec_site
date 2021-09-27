@@ -29,9 +29,13 @@ class Items
             case 'delete':
                 $this->delete();
                 break;
+            case 'change':
+                $this->changeNum();
+                break;
             default:
                 break;
         }
+
     }
 
     // 商品をカートに追加
@@ -47,6 +51,7 @@ class Items
             $rows = $_SESSION['cart'];
             foreach ($rows as $key => $row) {
                 if ($key == $id) {
+                    if (!$num == '')
                     $num = $num + $row['num'];
                 }
             }
@@ -72,5 +77,31 @@ class Items
     {
         $rows = $_SESSION['cart'] ? $_SESSION['cart'] : [];
         return $rows;
+    }
+
+    public function changeNum()
+    {
+        $id = filter_input(INPUT_POST, 'id');
+        $num = filter_input(INPUT_POST, 'num');
+        if ($num == '') {
+            $num = 0;
+        }
+        $_SESSION['cart'][$id]['num'] = $num;
+    }
+
+    // 商品の合計表示
+    public function sum()
+    {
+        $totalSum = 0;
+
+        if ($_SESSION['cart']) {
+            $rows = $_SESSION['cart'];
+            foreach ($rows as $key => $row) {
+                $sum = $row['price'] * $row['num'];
+                $totalSum += $sum;
+            }
+        }
+
+        return $totalSum;
     }
 }

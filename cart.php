@@ -9,12 +9,12 @@ $pdo = Database::pdo();
 $itemInstance = new Items($pdo);
 $itemInstance->branchCart();
 $rows = $itemInstance->getCart();
-print_r($rows);
+$totalSum = $itemInstance->sum();
 
 ?>
 
 <h2>カート</h2>
-    <div class="btn tocart">
+    <div class="btn">
         <a href="./">トップ</a>
     </div>
     <div class="container cart-container">
@@ -28,11 +28,12 @@ print_r($rows);
                         </div>
                         <div class="cart-item-info">
                             <p><?= $row['name']; ?></p>
-                            <p>&yen;<?= $row['price']; ?></p>
+                            <p>&yen;<?= number_format($row['price']); ?></p>
                             <div class="num">
                                 <p>数量</p>
-                                <form action="" method="post">
-                                    <input type="text" value="<?= $row['num']; ?>">
+                                <form action="?action=change" method="post">
+                                    <input type="text" name="num" value="<?= $row['num']; ?>" class="cart-num">
+                                    <input type="hidden" name="id" value="<?= $key; ?>">
                                 </form>
                                 <form action="cart.php?action=delete" method="post">
                                     <input type="submit" value="削除">
@@ -46,8 +47,8 @@ print_r($rows);
 
             <div class="buy">
                 <p>商品合計</p>
-                <span>&yen;202,000</span>
-                <form action="">
+                <span>&yen;<?= number_format($totalSum); ?></span>
+                <form action="message.php">
                     <input type="submit" value="購入する">
                 </form>
 

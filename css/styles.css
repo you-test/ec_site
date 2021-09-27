@@ -28,6 +28,7 @@ h1, h2 {
   display: block;
   width: 1000px;
   margin: 0 auto 20px;
+  cursor: pointer;
 }
 
 .btn a {
@@ -90,6 +91,7 @@ h1, h2 {
   color: white;
   background: black;
   border: none;
+  cursor: pointer;
 }
 
 /* cart */
@@ -158,4 +160,32 @@ h1, h2 {
   color: #fff;
   background: black;
   width: 105px;
+  cursor: pointer;
+}
+
+/* message */
+.mes {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.container.message {
+  display: block;
+  text-align: center;
+}
+
+h3 {
+  font-weight: normal;
+  margin: 0 0 30px;
+}
+
+.item-buy {
+  margin-bottom: 20px;
+}
+
+.item-buy span {
+  margin-right: 15px;
+}
+.container.message div:last-child {
+  margin-top: 40px;
 }

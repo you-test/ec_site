@@ -6,10 +6,9 @@ $pdo = Database::pdo();
 $itemInstance = new Items($pdo);
 $items = $itemInstance->getItems();
 
-print_r($_SESSION['cart']);
 ?>
     <h2>商品一覧</h2>
-    <div class="btn tocart">
+    <div class="btn">
         <a href="cart.php">カート</a>
     </div>
     <div class="container">
@@ -21,7 +20,7 @@ print_r($_SESSION['cart']);
                 </div>
                 <div>
                     <p><?= Utils::h($item->name); ?></p>
-                    <p>&yen;<?= Utils::h($item->price); ?></p>
+                    <p>&yen;<?= number_format(Utils::h($item->price)); ?></p>
                 </div>
                 <p><?= nl2br(Utils::h($item->comment)); ?></p>
                 <div class="num">

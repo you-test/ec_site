@@ -44,6 +44,7 @@ class Items
         $id = filter_input(INPUT_POST, 'id');
         $name = filter_input(INPUT_POST, 'name');
         $price = filter_input(INPUT_POST, 'price');
+        $image = filter_input(INPUT_POST, 'image');
         $num = filter_input(INPUT_POST, 'num');
 
         // 既にカートに入っている商品への数量追加処理
@@ -61,6 +62,7 @@ class Items
             $_SESSION['cart'][$id] = [
                 'name'  => $name,
                 'price' => $price,
+                'image' => $image,
                 'num'   => $num,
             ];
         }

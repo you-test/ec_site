@@ -24,7 +24,7 @@ $totalSum = $itemInstance->sum();
                 <?php foreach ($rows as $key => $row): ?>
                     <div class="item-block_cart">
                         <div class="img-wrapper_cart">
-                            <img src="<?= 'img/item'. $key . '.jpg'; ?>" alt="furniture">
+                            <img src="<?= $row['image']; ?>" alt="furniture">
                         </div>
                         <div class="cart-item-info">
                             <p><?= $row['name']; ?></p>

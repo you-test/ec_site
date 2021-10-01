@@ -50,7 +50,7 @@ h1, h2 {
   padding: 30px 0;
 }
 
-/* top */
+/* admin top */
 .item-block {
   width: 30%;
 }
@@ -62,12 +62,12 @@ h1, h2 {
 .img-wrapper {
   width: 100%;
   height: 200px;
-  object-fit: cover;
 }
 
 .img-wrapper img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .item-block div:nth-child(2) {
@@ -88,4 +88,42 @@ h1, h2 {
   color: white;
   text-align: center;
   border: none;
+}
+
+/* admin insert */
+.container.register-container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.img-wrapper.register-img {
+  width: 350px;
+  height: 350px;
+}
+
+.register-form label,
+.register-form input {
+  display: block;
+}
+
+.register-form input[type="text"] {
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.register-form input[type="file"] {
+  margin-bottom: 20px;
+}
+
+.register-form textarea {
+  width: 400px;
+  height: 170px;
+  margin-bottom: 30px;
+}
+
+.register-form input[type="submit"] {
+  width: 160px;
+  height: 40px;
+  color: #fff;
+  background: black;
 }

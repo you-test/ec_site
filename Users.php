@@ -20,10 +20,11 @@ class Users
       $stmt = $this->pdo->prepare("SELECT * FROM users where name = :name");
       $stmt->bindValue(':name', $name);
       $stmt->execute();
-      $resisteredName = $stmt->fetch();
+      $dataObj = $stmt->fetch();
+      $registeredName = $dataObj->name;
 
       if ($name === $registeredName) {
-        $message = 'すでにこちらのお名前は使われています。';
+        $message = 'すでにこちらのお名前は使われています！残念！！';
         return $message;
       } else {
         $stmt = $this->pdo->prepare("INSERT INTO users (name, pass) VALUES (:name, :pass)");
@@ -33,7 +34,7 @@ class Users
 
         header('Location: login.php');
       }
-    } 
+    }
   }
 
 
@@ -46,16 +47,24 @@ class Users
       $pass = filter_input(INPUT_POST, 'pass');
 
       $stmt = $this->pdo->prepare("SELECT * FROM users where name = :name");
-      $stmt->bindValue('name', $name);
+      $stmt->bindValue(':name', $name);
+      $stmt->execute();
       $stPass = $stmt->fetch();
-      $passdata = $stPass->pass;
 
-      if (password_hash($pass, $passdata)) {
-        header('Location: index.php');
+      if ($stPass !== false) {
+        $passdata = $stPass->pass;
+
+        if (password_verify($pass, $passdata)) {
+          header('Location: index.php');
+        } else {
+          $message = 'パスワードまたはユーザーネームが違います！！';
+          return $message;
+        }
       } else {
         $message = 'パスワードまたはユーザーネームが違います！！';
         return $message;
       }
-    }  
+
+    }
   }
 }

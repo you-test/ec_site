@@ -7,5 +7,6 @@ CREATE TABLE item (
 
 CREATE TABLE users (
   `id` SERIAL PRIMARY KEY,
-  `pass` TEXT
+  `name` INT NOT NULL,
+  `pass` INT NOT NULL
 );

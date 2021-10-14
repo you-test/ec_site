@@ -5,7 +5,8 @@ html {
 }
 
 body {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-family: 'Yu Gothic', sans-serif;
 }
 
 a {
@@ -45,14 +46,17 @@ h1, h2 {
   width: 1000px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   background: #ECE3E3;
-  padding: 30px 0;
+  padding: 30px 30px;
+  box-sizing: border-box;
 }
 
 /* admin top */
 .item-block {
   width: 30%;
+  padding-bottom: 40px;
 }
 
 .item-block > div {
@@ -70,9 +74,17 @@ h1, h2 {
   object-fit: cover;
 }
 
-.item-block div:nth-child(2) {
-  display: flex;
-  justify-content: space-between;
+.item-block__head p:first-child {
+  min-height: 55px;
+}
+
+.item-block__head p:last-child {
+  text-align: right;
+}
+
+.item-block__comment {
+  font-size: 1.4rem;
+  min-height: 65px;
 }
 
 .item-block__btn {
@@ -81,13 +93,19 @@ h1, h2 {
   margin-top: 10px;
 }
 
+#delete,
 .item-block__btn input[type="submit"] {
-  display: block;
   width: 100px;
   background: black;
   color: white;
   text-align: center;
   border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.item-block__btn input[type="submit"] {
+  font-size: 1.6rem;
 }
 
 /* admin insert */

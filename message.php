@@ -6,7 +6,8 @@ $pdo = Database::pdo();
 $itemInstance = new Items($pdo);
 $rows = $itemInstance->getCart();
 $totalSum = $itemInstance->sum();
-
+//カートを空にする
+$itemInstance->reset();
 ?>
 
 <h2>購入完了</h2>

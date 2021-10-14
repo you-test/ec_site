@@ -13,7 +13,7 @@ $editInstance->insert();
     </div>
     <div class="container register-container">
         <div class="img-wrapper register-img">
-            <img src="" alt="">
+            <img id="preview" src="" alt="preview">
         </div>
         <form action="" method="post" class="register-form" enctype="multipart/form-data">
             <label for="name">商品名</label>
@@ -27,5 +27,6 @@ $editInstance->insert();
             <input type="submit" value="登録" name="submit">
         </form>
     </div>
+    <script src="../js/fileReader.js"></script>
 </body>
 </html>

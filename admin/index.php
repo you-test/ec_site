@@ -25,16 +25,16 @@ $items = $itemInstance->getItems();
                 <div class="img-wrapper">
                     <img src="<?= '../' . Utils::h($item->image); ?>" alt="furniture_image">
                 </div>
-                <div>
+                <div class="item-block__head">
                     <p><?= Utils::h($item->name); ?></p>
                     <p>&yen;<?= number_format(Utils::h($item->price)); ?></p>
                 </div>
-                <p><?= nl2br(Utils::h($item->comment)); ?></p>
+                <p class="item-block__comment"><?= nl2br(Utils::h($item->comment)); ?></p>
 
                 <div class="item-block__btn">
                     <form action="?action=delete" method="post">
                         <input type="hidden" name="id" value="<?= Utils::h($item->id); ?>">
-                        <input type="submit" value="削除">
+                        <p id="delete">削除</p>
                     </form>
                     <form action="update.php" method="post">
                         <input type="hidden" name="id" value="<?= Utils::h($item->id); ?>">
@@ -44,5 +44,6 @@ $items = $itemInstance->getItems();
             </div>
         <?php endforeach; ?>
     </div>
+    <script src="../js/main.js"></script>
 </body>
 </html>

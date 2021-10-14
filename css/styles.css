@@ -65,12 +65,12 @@ h1, h2 {
 .img-wrapper {
   width: 100%;
   height: 200px;
-  object-fit: cover;
 }
 
 .img-wrapper img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .item-block__head p:first-child {
@@ -117,13 +117,18 @@ h1, h2 {
   width: 100%;
 }
 
+.cart-list {
+  width: 600px;
+}
+
 .item-block_cart {
   display: flex;
   justify-content: space-between;
-  width: 640px;
+  width: 100%;
   padding: 30px;
   background: #ECE3E3;
   margin-bottom: 30px;
+  box-sizing: border-box;
 }
 
 .img-wrapper_cart {

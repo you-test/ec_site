@@ -9,4 +9,13 @@
       num.parentNode.submit();
     });
   });
+
+  //削除ボタン押下時の確認メッセージ
+  const deleteBtn = document.getElementById('delete');
+  deleteBtn.addEventListener('click', () => {
+    if (!confirm('削除してもよろしいですか ??')) {
+      return;
+    }
+    deleteBtn.parentNode.submit();
+  });
 }

@@ -77,7 +77,7 @@ class Items
     // カートに表示する商品の取得
     public function getCart()
     {
-        $rows = $_SESSION['cart'] ? $_SESSION['cart'] : [];
+        $rows = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
         return $rows;
     }
 
@@ -96,7 +96,7 @@ class Items
     {
         $totalSum = 0;
 
-        if ($_SESSION['cart']) {
+        if (isset($_SESSION['cart'])) {
             $rows = $_SESSION['cart'];
             foreach ($rows as $key => $row) {
                 $sum = $row['price'] * $row['num'];
@@ -105,5 +105,10 @@ class Items
         }
 
         return $totalSum;
+    }
+
+    public function reset()
+    {
+        unset($_SESSION['cart']);
     }
 }

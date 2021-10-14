@@ -4,3 +4,8 @@ CREATE TABLE item (
   `price` INT,
   `explain` TEXT
 );
+
+CREATE TABLE users (
+  `id` SERIAL PRIMARY KEY,
+  `pass` TEXT
+);
